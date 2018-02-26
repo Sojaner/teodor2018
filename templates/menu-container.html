@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+  <a class="navbar-brand" href="#/">
+
+    <img src="assets/img/teodorslivs-logo-150x23.png" class="d-inline-block align-top" alt="">
+
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar" ng-controller="PanelController as panel">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" ng-class="{ active:panel.isSelected(1)}">
+        <a class="nav-link" ng-click="panel.selectTab(1)" href="#/home">Hem</a>
+      </li>
+      <li class="nav-item" ng-class="{ active:panel.isSelected(2)}">
+        <a class="nav-link" ng-click="panel.selectTab(2)" href="#/order">Beställ</a>
+      </li>
+      <li class="nav-item" ng-class="{ active:panel.isSelected(3)}">
+        <a class="nav-link" ng-click="panel.selectTab(3)" href="#/products">Produkter</a>
+      </li>
+      <li class="nav-item" ng-class="{ active:panel.isSelected(4)}">
+        <a class="nav-link" ng-click="panel.selectTab(4)" href="#/about">Om oss</a>
+      </li>                     
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link btn btn-sm btn-success" href="#">Beställ här</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">+46 706 06 31 70</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">email@mail.com</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+</nav>

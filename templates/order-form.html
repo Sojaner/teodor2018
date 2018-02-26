@@ -1,0 +1,90 @@
+<form id="orderForm" name="orderForm" role="form"  ng-submit="submitForm(orderForm.$valid)" class="orderForm" ng-controller="formController as formCtrl" novalidate>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Produkt</th>
+      <th scope="col">Antal</th>      
+      <th scope="col" class="text-right">Pris</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="product in formCtrl.products">
+      <td>
+        <img ng-src="{{product.images.thumb}}" alt="{{product.name}}">
+        <h6 class="d-inline-block">{{product.name}} <small class="d-block">{{product.description}}</small></h6>
+      </td>
+      <td>
+         <input type="number" class="form-control" ng-model="product.quantity" name="{{'quantity' + product.productId}}" min="0" max="99" required> 
+      </td>
+      <td class="text-right">
+        {{product.price | currency : "SEK"}}
+      </td>      
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="text-right"><h5 class="d-inline-block">Totalt: <em ng-bind="sumCalc(product.price) | currency : 'SEK'"></em></h5></td>
+    </tr>
+  </tfoot>  
+</table>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="inputEmail">Email</label>
+            <input name="email" ng-model="formCtrl.email" type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                <div ng-show="orderForm.email.$invalid && !orderForm.email.$pristine" class="invalid-feedback">
+                    Vänligen fyll i en korrekt email
+                </div>                
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="inputFirstName">Förnamn</label>
+            <input name="firstname" ng-model="formCtrl.fName" type="text" class="form-control" id="inputFirstName" placeholder="Förnamn" required>
+                <div ng-show="orderForm.fName.$invalid && !orderForm.fName.$pristine" class="invalid-feedback">
+                    Vänligen fyll i ditt förnamn
+                </div>                 
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="inputLastName">Efternamn</label>
+            <input name="lastname" ng-model="formCtrl.lName" type="text" class="form-control" id="inputLastName" placeholder="Efternamn" required>
+                <div ng-show="orderForm.lName.$invalid && !orderForm.lName.$pristine" class="invalid-feedback">
+                    Vänligen fyll i ditt efternamn
+                </div>                 
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="inputStreet">Gatuadress</label>
+            <input name="street" ng-model="formCtrl.street" type="text" class="form-control" id="inputStreet" placeholder="Gatuadress" required>
+                <div ng-show="orderForm.street.$invalid && !orderForm.street.$pristine" class="invalid-feedback">
+                    Vänligen fyll i din gatuaddress
+                </div>                 
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="inputZip">Postnr</label>
+            <input name="zip" ng-model="formCtrl.zip" type="text" class="form-control" id="inputZip" placeholder="Postnummer" required>
+                <div ng-show="orderForm.zip.$invalid && !orderForm.zip.$pristine" class="invalid-feedback">
+                    Vänligen fyll i ditt postnummer
+                </div>                 
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="inputTown">Stad</label>
+            <input name="town" ng-model="formCtrl.town" type="text" class="form-control" id="inputTown" placeholder="Stad" required>
+                <div ng-show="orderForm.town.$invalid && !orderForm.town.$pristine" class="invalid-feedback">
+                    Vänligen fyll i din stad
+                </div>                 
+        </div>
+    </div>
+
+<div> orderForm is {{orderForm.$valid}}</div>
+
+    <div class="form-group"> 
+            <button type="submit" class="btn btn-default" id="inputSubmitButton" ng-disabled="orderForm.$invalid && inputQuantity.">Skicka</button>
+            
+    </div>
+</form>
