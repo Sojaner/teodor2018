@@ -84,7 +84,7 @@
 <div> orderForm is {{orderForm.$valid}}</div>
 
     <div class="form-group"> 
-            <button type="submit" class="btn btn-default" id="inputSubmitButton" ng-disabled="orderForm.$invalid && inputQuantity.">Skicka</button>
+            <button type="submit" class="btn btn-default" id="inputSubmitButton" ng-disabled="orderForm.$invalid || !checkProductSelected()">Skicka</button>
             
     </div>
 </form>
