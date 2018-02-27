@@ -61,6 +61,18 @@
 		return sum;
 		//totalPrice = sum;
 		};
+		
+		$scope.checkProductSelected = function() {
+			
+			var sum = 0;
+			
+			angular.forEach(product, function(product, index) {
+				
+				sum += parseInt(product.quantity, 10) * product.price;
+			});
+			
+			return sum > 0;
+		};
 	});		
 
 	var product = [
